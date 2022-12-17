@@ -1,0 +1,22 @@
+<div class="input-group" style="width: 30%; margin-left: 40%;">
+    <input class="form-control" type="text" [(ngModel)]= "nom"  placeholder="Enterer le nom de produit">
+    <button  type="submit" (click)="search()" class="btn btn-outline-success">search</button>
+  </div>
+  <br><br>
+<div class="row">
+    <div class="col-md-3 col-sm-6" *ngFor="let p of products">
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="#" class="image" >
+                    <img class="pic-1" style="height: 5cm; width: 3cm; " src="{{p.image}}">
+                </a>
+             
+            </div>
+            <div class="product-content">
+                <h3 class="title"><a href="#">{{p.nom}}</a></h3>
+                <div class="price">${{p.prix}}</div>
+            </div>
+        </div>
+    </div>
+ </div>
+  

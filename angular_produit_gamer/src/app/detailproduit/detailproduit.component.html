@@ -1,0 +1,6 @@
+<div style="margin-left:40%"><h2>{{product.nom}}</h2>
+
+<h2 style="color: rgb(39, 186, 19);" *ngIf="product.quantite!= 0 ; else nonstock">Produit en stock :<h2>{{product.quantite}}</h2></h2>
+<ng-template  #nonstock><h2 style="color: rgb(255, 0, 0);">hors stock </h2> </ng-template>
+<button (click)="back()">retour</button>
+</div>

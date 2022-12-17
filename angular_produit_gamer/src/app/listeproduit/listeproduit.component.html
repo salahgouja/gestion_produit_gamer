@@ -1,0 +1,61 @@
+<div class="input-group" style="width: 30%;">
+  <input class="form-control" type="text" [(ngModel)]= "nom"  placeholder="Enterer le nom de produit">
+  <button  type="submit" (click)="search()" class="btn btn-outline-success">search</button>
+</div>
+<div class="row" style="width: 20%; margin-left: 70%; "> <button type="button" class="btn btn-primary"[routerLink]="'/produit1'"
+  >Ajouter </button></div>
+
+            <br>
+            <table class="table align-middle mb-0 bg-white" *ngIf="produitF !=null  ; else vide ">
+                <thead class="bg-light">
+              
+                 <tr>
+                                      <th><button (click)="afficher()">{{va}}</button></th>
+                                      <th>id</th>
+                                      <th>nom</th>
+                                      <th>description</th>
+                                      <th>quantite</th>
+                                      <th>prix</th>
+                                      <th>action </th>
+                                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let p of produit" [ngStyle]="{color:getcolor(p.quantite)}" >
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                            *ngIf="va=='masquer'" [src]=p.image
+                            style="width: 45px; height: 45px"
+                           
+                            />
+                      
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">{{p.id}}</p>
+                      
+                    </td>
+                    <td>
+                      <span class="badge badge-success rounded-pill d-inline"><a routerLink ="/product/{{p.id}}">{{p.nom | uppercase}}</a></span>
+                    </td>
+                    <td>{{p.description}}</td>
+                    <td >{{p.quantite}}</td>
+                   <td>{{p.prix | number:'.2-2'}}</td>
+                    <td>
+                      <button (click)="supprimer(p.id)" class="btn btn-danger">
+                        delete
+                      </button>
+                      
+                      <button (click)="update(p.id)" class="btn btn-warning">
+                        edit
+                      </button>
+                      <button (click)="view(p.id)" class="btn btn-info">
+                        details
+                      </button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            <ng-template #vide> <h2 style="color:red ; "> tableau vide </h2></ng-template>
+        
